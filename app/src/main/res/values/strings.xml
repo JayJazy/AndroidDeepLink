@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DeepLinkPracticeApp</string>
+
+    <!-- Scheme -->
+    <string name="app_scheme">jay</string>
+
+    <!-- App Links Domains -->
+    <string name="app_link_domain_primary">jayjazy.github.io</string>
+    <string name="app_link_domain_secondary">jayjazy.github.io</string>
+
+    <!-- Deep Link Hosts -->
+    <string name="scheme_host_main">main</string>
+    <string name="scheme_host_detail">detail</string>
+    <string name="scheme_host_setting">setting</string>
+
+</resources>
