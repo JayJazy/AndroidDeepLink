@@ -27,7 +27,7 @@ class SettingActivity : BaseActivity() {
         extractDeepLinkParameter(KEY_SETTING_ID)
             ?: getBundle(savedInstanceState)?.getString(KEY_SETTING_ID)
             ?: run {
-                logFunction("KEY_MEMBER_ID 파라미터가 없음")
+                logFunction("KEY_SETTING_ID 파라미터가 없음")
                 finish()
                 return
             }
@@ -35,7 +35,7 @@ class SettingActivity : BaseActivity() {
 
     @Composable
     override fun Content() {
-        val memberId by viewModel.memberId.collectAsStateWithLifecycle()
+        val settingId by viewModel.settingId.collectAsStateWithLifecycle()
 
         Column(
             modifier = Modifier
@@ -44,7 +44,7 @@ class SettingActivity : BaseActivity() {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Member ID : $memberId",
+                text = "Setting ID : $settingId",
                 style = MaterialTheme.typography.headlineMedium
             )
         }

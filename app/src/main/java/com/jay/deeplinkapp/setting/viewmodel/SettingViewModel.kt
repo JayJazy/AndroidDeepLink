@@ -10,12 +10,12 @@ class SettingViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val _memberId = MutableStateFlow("")
-    val memberId = _memberId.asStateFlow()
+    private val _settingId = MutableStateFlow("")
+    val settingId = _settingId.asStateFlow()
 
     init {
         savedStateHandle.get<String>(KEY_SETTING_ID)?.let {
-            _memberId.value = it
+            _settingId.value = it
         }
     }
 }

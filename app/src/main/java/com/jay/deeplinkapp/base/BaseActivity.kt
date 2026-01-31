@@ -21,9 +21,7 @@ abstract class BaseActivity : ComponentActivity() {
     protected fun getBundle(savedInstanceState: Bundle?): Bundle? =
         savedInstanceState ?: intent.extras
 
-    protected open fun setSavedInstanceState(savedInstanceState: Bundle?) {
-        // no-op
-    }
+    protected open fun setSavedInstanceState(savedInstanceState: Bundle?) { }
 
     // 딥링크 처리를 위한 헬퍼 메서드들
     protected fun extractDeepLinkParameter(key: String): String? {

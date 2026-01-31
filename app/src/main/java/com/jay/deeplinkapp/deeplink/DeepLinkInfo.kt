@@ -14,6 +14,10 @@ enum class DeepLinkInfo(@StringRes val hostResId: Int) : DeepLinkBuilder, DeepLi
         override fun createIntentForDeepLink(context: Context, deepLinkUri: Uri): Intent =
             MainActivity.Companion.getIntent(context)
 
+        override fun buildSchemeDeepLink(vararg params: Pair<String, String>): String {
+            return "${APP_SCHEME}://main"
+        }
+
         override fun buildDeepLink(vararg params: Pair<String, String>): String {
             return "${APP_LINK_BASE_URL}/main"
         }
@@ -22,6 +26,11 @@ enum class DeepLinkInfo(@StringRes val hostResId: Int) : DeepLinkBuilder, DeepLi
     DETAIL(R.string.scheme_host_detail) {
         override fun createIntentForDeepLink(context: Context, deepLinkUri: Uri): Intent =
             DetailActivity.getIntentFromUri(context, deepLinkUri)
+
+        override fun buildSchemeDeepLink(vararg params: Pair<String, String>): String {
+            val query = params.joinToString("&") { "${it.first}=${it.second}" }
+            return "${APP_SCHEME}://detail?$query"
+        }
 
         override fun buildDeepLink(vararg params: Pair<String, String>): String {
             val query = params.joinToString("&") { "${it.first}=${it.second}" }
@@ -33,6 +42,11 @@ enum class DeepLinkInfo(@StringRes val hostResId: Int) : DeepLinkBuilder, DeepLi
         override fun createIntentForDeepLink(context: Context, deepLinkUri: Uri): Intent =
             SettingActivity.getIntentFromUri(context, deepLinkUri)
 
+        override fun buildSchemeDeepLink(vararg params: Pair<String, String>): String {
+            val query = params.joinToString("&") { "${it.first}=${it.second}" }
+            return "${APP_SCHEME}://setting?$query"
+        }
+
         override fun buildDeepLink(vararg params: Pair<String, String>): String {
             val query = params.joinToString("&") { "${it.first}=${it.second}" }
             return "${APP_LINK_BASE_URL}/setting?$query"
@@ -43,6 +57,7 @@ enum class DeepLinkInfo(@StringRes val hostResId: Int) : DeepLinkBuilder, DeepLi
 
     companion object {
         private const val APP_LINK_BASE_URL = "https://jayjazy.github.io"
+        private const val APP_SCHEME = "jay"
 
         /**
          * URI를 분석하여 적절한 DeepLinkInfo를 반환

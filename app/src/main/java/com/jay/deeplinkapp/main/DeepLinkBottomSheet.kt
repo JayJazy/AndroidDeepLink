@@ -19,9 +19,9 @@ import com.jay.deeplinkapp.util.compose.SpacerHeight
 @Composable
 fun DeepLinkBottomSheet(
     deepLink: String,
+    onDismiss: () -> Unit,
     onCopy: () -> Unit,
-    onOpen: () -> Unit,
-    onDismiss: () -> Unit
+    onOpen: () -> Unit
 ) {
     Column(
         modifier = Modifier.Companion
